@@ -17,7 +17,7 @@
  * under the License.
  */
 
- 
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -47,12 +47,13 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
         console.log('Received Event: ' + id);
 
-        linternita.probar();
         
-
+        
         readyStateInterval = setInterval(function() {
             console.log('Received Event: ' + id);
         }, 1000);
+
+        linternita.probar();
 
 
     }

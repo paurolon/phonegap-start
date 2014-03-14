@@ -66,6 +66,7 @@ var app = {
 var linternita = {
     probar: function() {
         window.plugins.flashlight.available(function(isAvailable) {
+            console.log('Event: ' + isAvailable);
             if (isAvailable) {
                 alert("Flashlight available on this device");
                 // switch on
@@ -80,7 +81,10 @@ var linternita = {
         });
     },
     prender: function() {
-        window.plugins.flashlight.switchOn();
+
+        window.plugins.flashlight.switchOn(successCallback, errorCallback);
+        console.log(successCallback +'Event: ' + errorCallback);
+
     },
     apagar: function() {
         window.plugins.flashlight.switchOff();

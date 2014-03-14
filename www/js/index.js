@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+ 
 var app = {
     // Application Constructor
     initialize: function() {
@@ -40,10 +42,46 @@ var app = {
         var parentElement = document.getElementById(id);
         var listeningElement = parentElement.querySelector('.listening');
         var receivedElement = parentElement.querySelector('.received');
-
+        
         listeningElement.setAttribute('style', 'display:none;');
         receivedElement.setAttribute('style', 'display:block;');
-
         console.log('Received Event: ' + id);
+
+        linternita.probar();
+        
+
+        readyStateInterval = setInterval(function() {
+            console.log('Received Event: ' + id);
+        }, 1000);
+
+
+    }
+};
+
+
+
+
+
+var linternita = {
+    probar: function() {
+        window.plugins.flashlight.available(function(isAvailable) {
+            if (isAvailable) {
+                alert("Flashlight available on this device");
+                // switch on
+                window.plugins.flashlight.switchOn(); // success/error callbacks may be passed
+                // switch off after 3 seconds
+                setTimeout(function() {
+                    window.plugins.flashlight.switchOff(); // success/error callbacks may be passed
+                }, 3000);
+            } else {
+                alert("Flashlight not available on this device");
+            }
+        });
+    },
+    prender: function() {
+        window.plugins.flashlight.switchOn();
+    },
+    apagar: function() {
+        window.plugins.flashlight.switchOff();
     }
 };
